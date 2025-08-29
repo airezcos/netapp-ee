@@ -14,5 +14,5 @@ jobs:
         run: |
           docker login quay.io --username airez --password ${{ secrets.QUAY_TOK }}
           pip install ansible-builder
-          ansible-builder build -t quay.io/airez/netapp-ee
-          docker push quay.io/airez/netapp-ee
+          ansible-builder build -vvv -t quay.io/airez/netapp-ee:latest
+          docker push quay.io/airez/netapp-ee:latest
