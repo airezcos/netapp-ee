@@ -1,0 +1,38 @@
+---
+version: 3
+images:
+  base_image:
+    name: redhat/ubi10:latest
+dependencies:
+  python_interpreter:
+    package_system: python3.12
+    python_path: /usr/bin/python3.12
+  ansible_core:
+    # Require minimum of 2.15 to get ansible-inventory --limit option
+    package_pip: ansible-core==2.16.14
+  ansible_runner:
+    package_pip: ansible-runner
+  galaxy: |
+    ---
+    collections:
+      - name: community.vmware
+      - name: ansible.posix
+      - name: netapp.ontap
+  system: |
+    git-core
+    sshpass
+    cifs-utils  # Essential for mount -t cifs
+    samba-client  # Optional fallback for smbclient if mounts fail
+    keyutils  # For credential keyring management
+  python: |
+    pexpect>=4.5
+    passlib
+    receptorctl
+    pyvmomi<9.0.0.0
+additional_build_steps:
+  append_base:
+    - RUN $PYCMD -m pip install -U pip
+  append_final:
+    - COPY --from=quay.io/ansible/receptor:devel /usr/bin/receptor /usr/bin/receptor
+    - RUN mkdir -p /var/run/receptor
+    - RUN alternatives --install /usr/bin/python python /usr/bin/python3.12 312
