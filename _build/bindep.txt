@@ -1,0 +1,5 @@
+git-core
+sshpass
+cifs-utils  # Essential for mount -t cifs
+samba-client  # Optional fallback for smbclient if mounts fail
+keyutils  # For credential keyring management
