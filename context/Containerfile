@@ -1,4 +1,4 @@
-ARG EE_BASE_IMAGE="redhat/ubi10:latest"
+ARG EE_BASE_IMAGE="docker.io/redhat/ubi10:latest"
 ARG PYCMD="/usr/bin/python3.12"
 ARG PYPKG="python3.12"
 ARG PKGMGR_PRESERVE_CACHE=""
