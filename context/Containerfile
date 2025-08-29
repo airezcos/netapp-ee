@@ -1,3 +1,3 @@
 FROM "quay.io/centos/centos:stream10"
-RUN mkdir -p /usr/share/ansible && dnf install -y vim-enhanced
+RUN touch this_is_a_test_file
 CMD ["bash"]
