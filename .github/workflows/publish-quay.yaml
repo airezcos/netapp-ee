@@ -1,0 +1,16 @@
+name: Ansible-builder CI for Quay.io
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Ansible-builder and create Dockerfile
+        run: |
+          pip install ansible-builder
+          ansible-builder create

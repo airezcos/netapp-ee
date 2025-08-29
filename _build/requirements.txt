@@ -1,4 +1,0 @@
-pexpect>=4.5
-passlib
-receptorctl
-pyvmomi<9.0.0.0
