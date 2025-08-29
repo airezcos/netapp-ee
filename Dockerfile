@@ -1,3 +1,3 @@
-FROM quay.io/centos/centos:stream10
-RUN touch new-test-file
+FROM docker.io/redhat/ubi10:latest
+RUN touch test-file
 CMD ["bash"]
