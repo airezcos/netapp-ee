@@ -1,3 +1,3 @@
 FROM docker.io/redhat/ubi10:latest
-RUN touch test-file
+RUN dnf install vim-enhanced
 CMD ["bash"]
