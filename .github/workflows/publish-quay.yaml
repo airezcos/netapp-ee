@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Ansible-builder and create Dockerfile
         run: |
-          docker login quay.io --username airez --password ${{ secrets.QUAY_TOK }}
+          podman login quay.io --username airez --password ${{ secrets.QUAY_TOK }}
           pip install ansible-builder
           ansible-builder build -vvv -t quay.io/airez/netapp-ee:latest
-          docker push quay.io/airez/netapp-ee:latest
+          podman push quay.io/airez/netapp-ee:latest
